@@ -1,5 +1,5 @@
 <template>
-  <div container>
+  <div>
     <p text="2xl" m="b6" class="capitalize">
       frame playground
       <sup text-gray:80>WIP</sup>
