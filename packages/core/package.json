@@ -1,0 +1,27 @@
+{
+  "name": "core",
+  "version": "0.0.0",
+  "description": "",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "guygubaby@gmail.com",
+  "license": "MIC",
+  "keywords": [],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "prepublishOnly": "pnpm build",
+    "dev": "pnpm build -- --watch",
+    "build": "tsup",
+    "start": "esno src/index.ts"
+  }
+}
