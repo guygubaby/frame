@@ -1,6 +1,8 @@
 module.exports = {
   extends: ['@bryce-loskie'],
-  rules: {},
+  rules: {
+    'no-console': 'off',
+  },
   overrides: [
     {
       files: ['playground/**/*.*'],

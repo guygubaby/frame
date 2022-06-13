@@ -1,46 +1,42 @@
 <template>
-  <div>
-    <div i-carbon-campsite text-4xl inline-block />
-    <p>
-      <span text-sm op75>It works, {{ foo }}</span>
-    </p>
-
-    <div py-4 />
-
-    <input
-      id="input"
-      v-model="name"
-      placeholder="What's your name?"
-      type="text"
-      autocomplete="false"
-      p="x-4 y-2"
-      w="250px"
-      text="center"
-      bg="transparent"
-      border="~ rounded gray-200 dark:gray-700"
-      outline="none active:none"
-      @keydown.enter="go"
-    >
+  <div class="ring rounded-xl" flex="~ col" items="center">
+    <div class="p-20 h-20">
+      <Framer appear :variants="variants">
+        <div v-if="isShow" i-carbon-campsite text-4xl inline-block />
+      </Framer>
+    </div>
 
     <div>
       <button
         class="m-3 text-sm btn"
-        :disabled="!name"
-        @click="go"
+        @click="toggle()"
       >
-        Go
+        Toggle
       </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { foo } from 'core/index'
+import { Framer, defineVariants, spring } from './component'
 
-const name = ref('')
-const router = useRouter()
-const go = () => {
-  if (name)
-    router.push(`/hi/${encodeURIComponent(name.value)}`)
-}
+const variants = defineVariants({
+  initial: {
+    x: -100,
+  },
+  enter: {
+    x: 0,
+    backgroundColor: 'red',
+    options: {
+      easing: spring(),
+    },
+  },
+  leave: {
+    x: 100,
+    opacity: 0,
+  },
+})
+
+const isShow = ref(true)
+const toggle = useToggle(isShow)
 </script>

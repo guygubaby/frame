@@ -1,21 +1,5 @@
 import { isDef, objectOmit } from '@bryce-loskie/utils'
-import { expect, test } from 'vitest'
-
-const variants = {
-  initial: {
-    x: -100,
-    y: -100,
-  },
-  enter: {
-    x: 0,
-    y: 0,
-    options: {
-      easing: {},
-    },
-  },
-}
-
-type Vars = typeof variants
+import type { Variants } from './types'
 
 const toArray = <T>(arrayLike: T) => {
   if (Array.isArray(arrayLike))
@@ -23,7 +7,7 @@ const toArray = <T>(arrayLike: T) => {
   return [arrayLike]
 }
 
-const preprocessVariants = (vars: Vars) => {
+export const preprocessVariants = (vars: Variants) => {
   const { initial, enter: _enter } = vars
   const enter = objectOmit(_enter, 'options')
 
@@ -33,28 +17,14 @@ const preprocessVariants = (vars: Vars) => {
     // @ts-expect-error ignore-next-line
     const enterVal = enter[key]
 
-    const shouldAdd = isDef(initialVal) && isDef(enterVal)
-    if (!shouldAdd)
-      return acc
-
     const initialValue = toArray(initialVal)
     const enterValue = toArray(enterVal)
 
+    const keyframes = [initialValue, enterValue].flat().filter(item => isDef(item))
+
     return {
       ...acc,
-      [key]: [initialValue, enterValue].flat(2),
+      [key]: keyframes,
     }
   }, {})
 }
-
-test('test variants utility fn', () => {
-  const res = preprocessVariants(variants)
-  expect(res).toMatchInlineSnapshot(`
-    {
-      "x": [
-        -100,
-        0,
-      ],
-    }
-  `)
-})
