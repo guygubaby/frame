@@ -19,7 +19,8 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "prepublishOnly": "pnpm build",
+    "copy-readme": "esno ../../scripts/copy-readme.ts",
+    "prepublishOnly": "pnpm run copy-readme && pnpm run build",
     "dev": "pnpm build -- --watch",
     "build": "tsup",
     "start": "esno src/index.ts"
