@@ -1,13 +1,23 @@
 {
-  "name": "core",
-  "version": "0.0.0",
-  "description": "",
+  "name": "@bryce-loskie/frame",
+  "version": "0.0.1-beta",
+  "description": "Animation utility for vue based on Motion One",
   "publishConfig": {
     "access": "public"
   },
   "author": "guygubaby@gmail.com",
   "license": "MIC",
-  "keywords": [],
+  "funding": "https://github.com/sponsors/guygubaby",
+  "homepage": "https://github.com/guygubaby/frame#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guygubaby/frame.git"
+  },
+  "bugs": {
+    "url": "https://github.com/guygubaby/frame/issues"
+  },
+  "keywords": ["vue", "animation", "transition", "spring"],
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -18,11 +28,20 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "copy-readme": "esno ../../scripts/copy-readme.ts",
     "prepublishOnly": "pnpm run copy-readme && pnpm run build",
     "dev": "pnpm build -- --watch",
     "build": "tsup",
     "start": "esno src/index.ts"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "dependencies": {
+    "motion": "^10.10.0"
   }
 }

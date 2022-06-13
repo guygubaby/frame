@@ -9,7 +9,7 @@ const options: Options = {
   entryPoints: [
     'src/index.ts',
   ],
-  external: [],
+  external: ['vue', 'motion'],
 }
 
 export default options

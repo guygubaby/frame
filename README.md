@@ -16,7 +16,7 @@ pnpm i @bryce-loskie/frame
 
 ## TODO:
 
-  - [ ] Add Transition component // https://motion.dev/vue/motion
+  - [x] Add Transition component
   - [ ] Add useFrame hook
   - [ ] Add directive // v-frame='variants'
-  - [ ] Export animate fn
+  - [ ] Export animate,spring fn

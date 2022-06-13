@@ -9,7 +9,7 @@ const toArray = <T>(arrayLike: T) => {
 
 export const preprocessVariants = (vars: Variants) => {
   const { initial, enter: _enter } = vars
-  const enter = objectOmit(_enter, 'options')
+  const enter = objectOmit(_enter, 'transition')
 
   return Object.keys(enter).reduce((acc, key) => {
     // @ts-expect-error ignore-next-line
@@ -18,6 +18,7 @@ export const preprocessVariants = (vars: Variants) => {
     const enterVal = enter[key]
 
     const initialValue = toArray(initialVal)
+
     const enterValue = toArray(enterVal)
 
     const keyframes = [initialValue, enterValue].flat().filter(item => isDef(item))
@@ -28,3 +29,5 @@ export const preprocessVariants = (vars: Variants) => {
     }
   }, {})
 }
+
+export const defineVariants = (variants: Variants) => variants

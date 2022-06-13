@@ -2,12 +2,8 @@ import type { PropType } from 'vue'
 import { Transition, h } from 'vue'
 import { animate } from 'motion'
 import type { Fn } from '@bryce-loskie/utils'
-import type { Variants } from './types'
-import { preprocessVariants } from './utils'
-
-export { spring } from 'motion'
-
-export const defineVariants = (variants: Variants) => variants
+import type { Variants } from '../types'
+import { preprocessVariants } from '../utils'
 
 export const Framer = defineComponent({
   name: 'Framer',
@@ -32,18 +28,18 @@ export const Framer = defineComponent({
 
     const onEnter = (el: Element, done: Fn) => {
       const keyframes = preprocessVariants(variants)
-      const options = variants.enter.options
+      const transition = variants.enter.transition
 
-      animate(el, keyframes, options).finished.finally(() => {
-        options?.onComplete?.(el)
+      animate(el, keyframes, transition).finished.finally(() => {
+        transition?.onComplete?.(el)
         done()
       })
     }
 
     const onLeave = (el: Element, done: Fn) => {
-      const options = variants.leave.options
-      animate(el, variants.leave, options).finished.finally(() => {
-        options?.onComplete?.(el)
+      const transition = variants.leave.transition
+      animate(el, variants.leave, transition).finished.finally(() => {
+        transition?.onComplete?.(el)
         done()
       })
     }
