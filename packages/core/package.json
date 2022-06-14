@@ -1,6 +1,6 @@
 {
   "name": "@bryce-loskie/frame",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Animation utility for vue based on Motion One",
   "publishConfig": {
     "access": "public"
@@ -16,7 +16,12 @@
   "bugs": {
     "url": "https://github.com/guygubaby/frame/issues"
   },
-  "keywords": ["vue", "animation", "transition", "spring"],
+  "keywords": [
+    "vue",
+    "animation",
+    "transition",
+    "spring"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
