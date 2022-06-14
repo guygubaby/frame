@@ -1,4 +1,4 @@
-# frame (WIP)
+# frame
 
 ## Animation utility for vue based on [Motion One](https://motion.dev/)
 
@@ -18,5 +18,5 @@ pnpm i @bryce-loskie/frame
 
   - [x] Add Transition component
   - [x] Add useFrame hook
-  - [ ] Add directive // v-frame='variants'
-  - [ ] Export animate,spring fn
+  - [x] Add directive
+  - [x] Export animate,spring,stagger fn
