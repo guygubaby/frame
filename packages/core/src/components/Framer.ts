@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import { Transition, h } from 'vue'
+import { Transition, defineComponent, h, useSlots } from 'vue'
 import { animate } from 'motion'
 import type { Fn } from '@bryce-loskie/utils'
 import type { Variants } from './types'
