@@ -66,7 +66,9 @@
 import { defineScrollbar } from '@bryce-loskie/scrollbar'
 import { Framer, defineDirective, defineFrame, defineVariants, spring, useFrame } from 'core/index'
 
-defineScrollbar()
+defineScrollbar({
+  width: '6px',
+})
 
 const variants = defineVariants({
   enter: {

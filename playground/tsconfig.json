@@ -1,5 +1,4 @@
 {
-  "extends": "../tsconfig.json",
   "compilerOptions": {
     "target": "esnext",
     "useDefineForClassFields": true,
@@ -16,14 +15,9 @@
       "@/*": ["src/*"],
       "core/*": ["../packages/core/src/*"]
     },
-    "types": ["vite/client", "node", "vite-plugin-pages/client"]
-  },
-  "exclude": ["dist", "node_modules"],
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "*.d.ts"
-  ]
+    "types": [
+      "vite/client",
+      "vite-plugin-pages/client"
+    ]
+  }
 }
