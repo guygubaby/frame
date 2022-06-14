@@ -8,7 +8,7 @@
     <ul flex="~ col" gap-2>
       <li>
         <p text="lg" m="b4">
-          Use Framer component
+          Use <code bg="gray-100" p-1 rounded>Framer</code> component
         </p>
         <div class="ring rounded-xl shadow" flex="~ col" items="center">
           <div class="p-20 h-20">
@@ -27,22 +27,40 @@
           </div>
         </div>
       </li>
+
+      <li>
+        <p text="lg" m="b4">
+          Use <code bg="gray-100" p-1 rounded>useFrame</code> hook
+        </p>
+        <div class="ring rounded-xl shadow" flex="~ col" items="center">
+          <div class="p-20 h-20">
+            <div ref="elRef" i-carbon-windy-snow text="4xl sky-500" inline-block />
+          </div>
+
+          <div>
+            <button
+              class="m-3 text-sm btn capitalize"
+              @click="animation?.reverse()"
+            >
+              reverse
+            </button>
+          </div>
+        </div>
+      </li>
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Framer, defineVariants, spring } from 'core/index'
+import { Framer, defineVariants, spring, useFrame } from 'core/index'
 
 const variants = defineVariants({
   initial: {
     x: -100,
-    color: 'red',
   },
   enter: {
     x: 0,
     scale: 2,
-    color: 'blue',
     transition: {
       easing: spring(),
     },
@@ -56,4 +74,12 @@ const variants = defineVariants({
 
 const isShow = ref(true)
 const toggle = useToggle(isShow)
+
+const elRef = ref()
+const animation = useFrame(elRef, {
+  x: [-200, 0],
+  scale: [1, 2],
+}, {
+  easing: spring(),
+})
 </script>

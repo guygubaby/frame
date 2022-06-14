@@ -30,4 +30,7 @@ export const preprocessVariants = (vars: Variants) => {
   }, {})
 }
 
+/**
+ * Used to define variants for `Framer` components.
+ */
 export const defineVariants = (variants: Variants) => variants

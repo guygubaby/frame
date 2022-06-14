@@ -17,6 +17,6 @@ pnpm i @bryce-loskie/frame
 ## TODO:
 
   - [x] Add Transition component
-  - [ ] Add useFrame hook
+  - [x] Add useFrame hook
   - [ ] Add directive // v-frame='variants'
   - [ ] Export animate,spring fn

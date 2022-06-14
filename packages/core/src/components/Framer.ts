@@ -2,8 +2,8 @@ import type { PropType } from 'vue'
 import { Transition, h } from 'vue'
 import { animate } from 'motion'
 import type { Fn } from '@bryce-loskie/utils'
-import type { Variants } from '../types'
-import { preprocessVariants } from '../utils'
+import { preprocessVariants } from './utils'
+import type { Variants } from './types'
 
 export const Framer = defineComponent({
   name: 'Framer',
