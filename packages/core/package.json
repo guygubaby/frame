@@ -1,12 +1,12 @@
 {
   "name": "@bryce-loskie/frame",
-  "version": "0.0.1-beta",
+  "version": "0.0.2",
   "description": "Animation utility for vue based on Motion One",
   "publishConfig": {
     "access": "public"
   },
   "author": "guygubaby@gmail.com",
-  "license": "MIC",
+  "license": "MIT",
   "funding": "https://github.com/sponsors/guygubaby",
   "homepage": "https://github.com/guygubaby/frame#readme",
   "repository": {

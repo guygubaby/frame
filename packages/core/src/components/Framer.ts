@@ -2,7 +2,6 @@ import type { PropType } from 'vue'
 import { Transition, h } from 'vue'
 import { animate } from 'motion'
 import type { Fn } from '@bryce-loskie/utils'
-import { preprocessVariants } from './utils'
 import type { Variants } from './types'
 
 export const Framer = defineComponent({
@@ -27,19 +26,20 @@ export const Framer = defineComponent({
     const slots = useSlots()
 
     const onEnter = (el: Element, done: Fn) => {
-      const keyframes = preprocessVariants(variants)
-      const transition = variants.enter.transition
+      const keyframes = variants.enter
+      const options = variants.enter.options
 
-      animate(el, keyframes, transition).finished.finally(() => {
-        transition?.onComplete?.(el)
+      animate(el, keyframes, options).finished.finally(() => {
+        options?.onComplete?.(el)
         done()
       })
     }
 
     const onLeave = (el: Element, done: Fn) => {
-      const transition = variants.leave.transition
-      animate(el, variants.leave, transition).finished.finally(() => {
-        transition?.onComplete?.(el)
+      const keyframes = variants.leave
+      const options = variants.leave.options
+      animate(el, keyframes, options).finished.finally(() => {
+        options?.onComplete?.(el)
         done()
       })
     }

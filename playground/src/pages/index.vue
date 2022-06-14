@@ -2,7 +2,7 @@
   <div>
     <p text="2xl" m="b6" class="capitalize">
       frame playground
-      <sup text-gray:80>Beta</sup>
+      <sup text-gray:80>RC</sup>
     </p>
 
     <ul flex="~ col" gap-2>
@@ -11,7 +11,7 @@
           Use <code bg="gray-100" p-1 rounded>Framer</code> component
         </p>
         <div class="ring rounded-xl shadow" flex="~ col" items="center">
-          <div class="p-20 h-20">
+          <div class="p-10 h-32">
             <Framer appear :variants="variants">
               <div v-if="isShow" i-carbon-windy-snow text-4xl inline-block />
             </Framer>
@@ -33,7 +33,7 @@
           Use <code bg="gray-100" p-1 rounded>useFrame</code> hook
         </p>
         <div class="ring rounded-xl shadow" flex="~ col" items="center">
-          <div class="p-20 h-20">
+          <div class="p-10 h-32">
             <div ref="elRef" i-carbon-windy-snow text="4xl sky-500" inline-block />
           </div>
 
@@ -53,7 +53,7 @@
           Use <code bg="gray-100" p-1 rounded>directive</code>
         </p>
         <div class="ring rounded-xl shadow" flex="~ col" items="center">
-          <div class="p-20 h-20">
+          <div class="p-10 h-32">
             <div v-frame="keyframes" i-carbon-windy-snow text="4xl sky-500" inline-block />
           </div>
         </div>
@@ -66,19 +66,16 @@
 import { Framer, defineDirective, defineFrame, defineVariants, spring, useFrame } from 'core/index'
 
 const variants = defineVariants({
-  initial: {
-    x: -200,
-  },
   enter: {
-    x: 0,
-    scale: 2,
-    transition: {
+    x: [-200, 0],
+    scale: [1, 2],
+    options: {
       easing: spring(),
     },
   },
   leave: {
     x: 200,
-    opacity: 0,
+    opacity: 0.5,
     scale: 1,
   },
 })
