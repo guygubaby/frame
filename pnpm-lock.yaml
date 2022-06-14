@@ -5,6 +5,7 @@ importers:
   .:
     specifiers:
       '@bryce-loskie/eslint-config': ^2.0.1
+      '@bryce-loskie/scrollbar': ^0.1.3
       '@bryce-loskie/utils': ^0.1.31
       '@iconify-json/carbon': ^1.1.5
       '@types/node': ^17.0.42
@@ -26,6 +27,8 @@ importers:
       vitest: ^0.14.2
       vue: ^3.2.37
       vue-router: ^4.0.16
+    dependencies:
+      '@bryce-loskie/scrollbar': 0.1.3
     devDependencies:
       '@bryce-loskie/eslint-config': 2.0.1_eslint@8.17.0+typescript@4.7.3
       '@bryce-loskie/utils': 0.1.31
@@ -204,6 +207,10 @@ packages:
       - supports-color
       - typescript
     dev: true
+
+  /@bryce-loskie/scrollbar/0.1.3:
+    resolution: {integrity: sha512-QRsOp3bwW4WTkVwaUfOy4iVt+sSHjsHGhAF0laLsrauBijTelLslbw6UG4Hp2mZsppXBeUixq1s3a551z2u0Rg==}
+    dev: false
 
   /@bryce-loskie/utils/0.1.31:
     resolution: {integrity: sha512-wfUecEweyRiWZD8s6ck3wNSA3xoizR1vTLs+MjXu9OiI4e0rGhk3J91hdqAMYeSWWXfuAqp1CPXxyaUbfDqkXA==}

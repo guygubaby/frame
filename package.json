@@ -40,5 +40,8 @@
     "vitest": "^0.14.2",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16"
+  },
+  "dependencies": {
+    "@bryce-loskie/scrollbar": "^0.1.3"
   }
 }

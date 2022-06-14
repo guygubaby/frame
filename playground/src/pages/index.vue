@@ -8,7 +8,7 @@
     <ul flex="~ col" gap-2>
       <li>
         <p text="lg" m="b4">
-          Use <code bg="gray-100" p-1 rounded>Framer</code> component
+          Use <code bg="gray-100 dark:gray-600" p-1 rounded>Framer</code> component
         </p>
         <div class="ring rounded-xl shadow" flex="~ col" items="center">
           <div class="p-10 h-32">
@@ -30,7 +30,7 @@
 
       <li>
         <p text="lg" m="b4">
-          Use <code bg="gray-100" p-1 rounded>useFrame</code> hook
+          Use <code bg="gray-100 dark:gray-600" p-1 rounded>useFrame</code> hook
         </p>
         <div class="ring rounded-xl shadow" flex="~ col" items="center">
           <div class="p-10 h-32">
@@ -50,7 +50,7 @@
 
       <li>
         <p text="lg" m="b4">
-          Use <code bg="gray-100" p-1 rounded>directive</code>
+          Use <code bg="gray-100 dark:gray-600" p-1 rounded>directive</code>
         </p>
         <div class="ring rounded-xl shadow" flex="~ col" items="center">
           <div class="p-10 h-32">
@@ -63,7 +63,10 @@
 </template>
 
 <script setup lang="ts">
+import { defineScrollbar } from '@bryce-loskie/scrollbar'
 import { Framer, defineDirective, defineFrame, defineVariants, spring, useFrame } from 'core/index'
+
+defineScrollbar()
 
 const variants = defineVariants({
   enter: {
