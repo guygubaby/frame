@@ -1,6 +1,6 @@
 {
   "name": "@bryce-loskie/frame",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Animation utility for vue based on Motion One",
   "publishConfig": {
     "access": "public"
