@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div container m-auto>
     <p text="2xl" m="b6" class="capitalize">
       frame playground
       <sup text-gray:80>RC</sup>
@@ -72,14 +72,14 @@ defineScrollbar({
 
 const variants = defineVariants({
   enter: {
-    x: [-200, 0],
+    x: [-120, 0],
     scale: [1, 2],
     options: {
       easing: spring(),
     },
   },
   leave: {
-    x: 200,
+    x: 120,
     opacity: 0.5,
     scale: 1,
   },
@@ -90,7 +90,7 @@ const toggle = useToggle(isShow)
 
 const elRef = ref()
 const animation = useFrame(elRef, {
-  x: [-200, 0],
+  x: [-120, 0],
   scale: [1, 2],
 }, {
   easing: spring(),
@@ -98,7 +98,7 @@ const animation = useFrame(elRef, {
 
 const vFrame = defineDirective()
 const keyframes = defineFrame({
-  x: [-200, 0],
+  x: [-120, 0],
   scale: [1, 2],
 }, {
   easing: spring(),
