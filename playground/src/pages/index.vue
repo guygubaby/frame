@@ -2,7 +2,7 @@
   <div container m-auto>
     <p text="2xl" m="b6" class="capitalize">
       frame playground
-      <sup text-gray:80>RC</sup>
+      <sup text-gray:80>{{ version }}</sup>
     </p>
 
     <ul flex="~ col" gap-2>
@@ -65,6 +65,7 @@
 <script setup lang="ts">
 import { defineScrollbar } from '@bryce-loskie/scrollbar'
 import { Framer, defineDirective, defineFrame, defineVariants, spring, useFrame } from 'core/index'
+import { version } from '../../../packages/core/package.json'
 
 defineScrollbar({
   width: '6px',

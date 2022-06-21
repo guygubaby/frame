@@ -25,23 +25,23 @@ export const Framer = defineComponent({
   setup({ appear, tag, variants }) {
     const slots = useSlots()
 
-    const onEnter = (el: Element, done: Fn) => {
-      const keyframes = variants.enter
-      const options = variants.enter.options
+    const interceptor = (el: Element, done: Fn, type: 'enter' | 'leave') => {
+      const keyframes = variants[type]
+      const options = keyframes.options
+      animate(el, keyframes, options)
+        .finished
+        .finally(() => {
+          options?.onComplete?.(el)
+          done()
+        })
+    }
 
-      animate(el, keyframes, options).finished.finally(() => {
-        options?.onComplete?.(el)
-        done()
-      })
+    const onEnter = (el: Element, done: Fn) => {
+      interceptor(el, done, 'enter')
     }
 
     const onLeave = (el: Element, done: Fn) => {
-      const keyframes = variants.leave
-      const options = variants.leave.options
-      animate(el, keyframes, options).finished.finally(() => {
-        options?.onComplete?.(el)
-        done()
-      })
+      interceptor(el, done, 'leave')
     }
 
     return () =>
