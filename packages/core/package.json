@@ -44,9 +44,9 @@
     "start": "esno src/index.ts"
   },
   "peerDependencies": {
-    "vue": "^3.0.0"
+    "vue": "^3.2.0"
   },
   "dependencies": {
-    "motion": "^10.10.0"
+    "motion": "^10.12.0"
   }
 }

@@ -58,13 +58,20 @@
           </div>
         </div>
       </li>
+
+      <!-- <li flex justify-center mt>
+        <router-link to="in-view" class="icon-btn flex items-center ring px-2 py-1 rounded">
+          InView
+          <div i-carbon-arrow-right ml-1 />
+        </router-link>
+      </li> -->
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
 import { defineScrollbar } from '@bryce-loskie/scrollbar'
-import { Framer, defineDirective, defineFrame, defineVariants, spring, useFrame } from 'core/index'
+import { EasingPresets, Framer, defineDirective, defineFrame, defineVariants, spring, useFrame } from 'core/index'
 import { version } from '../../../packages/core/package.json'
 
 defineScrollbar({
@@ -89,7 +96,7 @@ const variants = defineVariants({
 const isShow = ref(true)
 const toggle = useToggle(isShow)
 
-const elRef = ref()
+const elRef = ref<HTMLElement>()
 const animation = useFrame(elRef, {
   x: [-120, 0],
   scale: [1, 2],
@@ -99,9 +106,10 @@ const animation = useFrame(elRef, {
 
 const vFrame = defineDirective()
 const keyframes = defineFrame({
-  x: [-120, 0],
+  x: [-200, 0],
   scale: [1, 2],
 }, {
-  easing: spring(),
+  easing: EasingPresets.easeInOutQuart,
+  duration: 2,
 })
 </script>

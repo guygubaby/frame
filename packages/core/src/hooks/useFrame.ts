@@ -1,10 +1,11 @@
 import type { MaybeRef } from '@vueuse/core'
 import { tryOnScopeDispose } from '@vueuse/core'
-import type { AcceptedElements, AnimationOptionsWithOverrides, MotionKeyframesDefinition } from '@motionone/dom'
+import type { AnimationOptionsWithOverrides, MotionKeyframesDefinition } from '@motionone/dom'
 import type { AnimationControls } from 'motion'
 import { animate } from 'motion'
 import type { Nullable } from '@bryce-loskie/utils'
 import { onMounted, shallowRef, unref } from 'vue'
+import type { AcceptedElements } from '../types'
 
 type AnimationOptions = AnimationOptionsWithOverrides & {
   onComplete?: (el: AcceptedElements) => void
