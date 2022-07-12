@@ -1,5 +1,5 @@
 // misc
-export { spring, stagger, animate, inView } from 'motion'
+export { spring, stagger, animate } from 'motion'
 
 // Framer component related
 export { Framer } from './components'
@@ -15,4 +15,8 @@ export { defineDirective, defineFrame } from './directive/frame'
 // easing presets
 export { EasingPresets } from './easing/presets'
 
+// types
 export type { AcceptedElements } from './types/index'
+
+// in view module
+export { inView, useInView } from './in-view/index'

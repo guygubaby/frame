@@ -1,62 +1,129 @@
 <template>
-  <div>
-    <h1 mb>
+  <section w-screen flex="~ col" items-center container mx-auto>
+    <h1 mb ml text-2xl>
       In View
     </h1>
 
-    <div h-30rem w-30rem overflow-y-auto p>
-      <div w-full h-full flex items-center justify-center>
-        Scroll down
-      </div>
-      <section ref="sectionRef0" translate-x="-100%" w-full h-full bg-purple>
-        <span>Scroll</span>
+    <div h-30rem w-30rem overflow-y-auto p-4 snap-y snap-mandatory>
+      <section
+        w-full
+        h-full
+        flex
+        items-center
+        justify-center
+        ring
+        text-2xl
+        mb-5
+        snap-center
+        text-indigo
+        dark:text-indigo-300
+        font-bold
+      >
+        <span>Scroll down</span>
+        <div i-carbon-arrow-down />
       </section>
-      <section ref="sectionRef1" w-full h-full>
-        <span>to</span>
-      </section>
-      <section w-full h-full>
-        <span>trigger</span>
-      </section>
-      <section w-full h-full>
-        <span>animations!</span>
+
+      <section
+        v-for="item in list"
+        :key="item.id"
+        ref="sectionRefs"
+        :class="item.bg"
+        snap-center
+        w-full
+        h-full
+        flex
+        items-center
+        justify-center
+        rounded
+        not-last-of-type:mb-4
+      >
+        <div w-full text-center text-white text-2xl class="span">
+          {{ item.label }}
+        </div>
       </section>
     </div>
-  </div>
+
+    <div text-center mt-20>
+      <router-link
+        to="/"
+        class="icon-btn flex items-center ring px-2 py-1 rounded"
+      >
+        <div i-carbon-arrow-left mr-1 />
+        Back
+      </router-link>
+    </div>
+  </section>
 </template>
 
 <script lang="ts" setup>
-import { animate, inView } from 'core/index'
-import { useInView } from './in-view-hook'
+import { EasingPresets, animate, useInView } from 'core/index'
 
-const sectionRef0 = ref()
+interface Item {
+  id: number
+  label: string
+  bg: string
+}
 
-useInView(sectionRef0, ({ target }) => {
-  console.log('enter')
-  animate(target, {
-    transform: 'none',
-  })
+let uid = 0
 
-  return () => {
-    console.log('out')
-    // animate(target, {
-    //   x: [0, 100],
-    // })
-  }
-}, {
-  amount: 0.2,
-})
+const list: Item[] = [
+  {
+    id: ++uid,
+    label: 'Scroll',
+    bg: 'bg-teal-500',
+  },
+  {
+    id: ++uid,
+    label: 'to',
+    bg: 'bg-indigo-500',
+  },
+  {
+    id: ++uid,
+    label: 'trigger',
+    bg: 'bg-slate-500',
+  },
+  {
+    id: ++uid,
+    label: 'animations!',
+    bg: 'bg-violet-500',
+  },
+]
 
-const sectionRef1 = ref()
+const sectionRefs = ref<HTMLElement[]>([])
 
-useInView(sectionRef1, ({ target }) => {
-  animate(target, {
-    rotate: [0, 360],
-  })
+useInView(
+  sectionRefs,
+  ({ target }) => {
+    const span = target.querySelector('.span')!
 
-  return () => {
-    animate(target, {
-      x: [360, 0],
-    })
-  }
-})
+    const enterControl = animate(
+      span,
+      {
+        transform: 'none',
+      },
+      {
+        delay: 0.2,
+        duration: 1,
+        easing: EasingPresets.easeInOutQuart,
+      },
+    )
+
+    return () => {
+      enterControl.cancel()
+
+      animate(span, {
+        x: [0, '-80%'],
+      })
+    }
+  },
+  {
+    amount: 0.35,
+  },
+)
 </script>
+
+<style lang="css" scoped>
+.span {
+  transform: translateX(-80%);
+}
+</style>

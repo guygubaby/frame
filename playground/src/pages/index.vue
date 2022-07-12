@@ -59,12 +59,12 @@
         </div>
       </li>
 
-      <!-- <li flex justify-center mt>
+      <li flex justify-center mt>
         <router-link to="in-view" class="icon-btn flex items-center ring px-2 py-1 rounded">
           InView
           <div i-carbon-arrow-right ml-1 />
         </router-link>
-      </li> -->
+      </li>
     </ul>
   </div>
 </template>
