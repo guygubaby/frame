@@ -19,4 +19,4 @@ export { EasingPresets } from './easing/presets'
 export type { AcceptedElements } from './types/index'
 
 // in view module
-export { inView, useInView } from './in-view/index'
+export { inView, useInView, defineInViewDirective, defineInViewVariants } from './in-view/index'

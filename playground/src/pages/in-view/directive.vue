@@ -1,7 +1,7 @@
 <template>
   <section w-screen flex="~ col" items-center container mx-auto>
     <h1 mb ml text-2xl>
-      In View
+      In View directive
     </h1>
 
     <div h-30rem w-30rem overflow-y-auto p-4 snap-y snap-mandatory>
@@ -26,7 +26,7 @@
       <section
         v-for="item in list"
         :key="item.id"
-        ref="sectionRefs"
+        v-inView="variants"
         :class="item.bg"
         snap-center
         w-full
@@ -43,9 +43,9 @@
       </section>
     </div>
 
-    <div text-center mt-20>
+    <div text-center mt>
       <router-link
-        to="/"
+        to="/in-view"
         class="icon-btn flex items-center ring px-2 py-1 rounded"
       >
         <div i-carbon-arrow-left mr-1 />
@@ -56,7 +56,7 @@
 </template>
 
 <script lang="ts" setup>
-import { EasingPresets, animate, useInView } from 'core/index'
+import { EasingPresets, animate, defineInViewDirective, defineInViewVariants } from 'core/index'
 
 interface Item {
   id: number
@@ -89,11 +89,10 @@ const list: Item[] = [
   },
 ]
 
-const sectionRefs = ref<HTMLElement[]>([])
+const vInView = defineInViewDirective()
 
-useInView(
-  sectionRefs,
-  ({ target }) => {
+const variants = defineInViewVariants({
+  onStart: ({ target }) => {
     const span = target.querySelector('.span')!
 
     const enterControl = animate(
@@ -102,7 +101,7 @@ useInView(
         transform: 'none',
       },
       {
-        delay: 0.2,
+        delay: 0.05,
         duration: 1,
         easing: EasingPresets.easeInOutQuart,
       },
@@ -116,10 +115,10 @@ useInView(
       })
     }
   },
-  {
-    amount: 0.35,
+  options: {
+    amount: 0.25,
   },
-)
+})
 </script>
 
 <style lang="css" scoped>
