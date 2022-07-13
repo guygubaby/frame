@@ -66,7 +66,7 @@
 </template>
 
 <script lang="ts" setup>
-import { EasingPresets, animate, useInView } from 'core/index'
+import { animate, useInView } from 'core/index'
 
 interface Item {
   id: number
@@ -110,19 +110,21 @@ useInView(
       span,
       {
         transform: 'none',
+        opacity: 1,
       },
       {
         delay: 0.2,
-        duration: 1,
-        easing: EasingPresets.easeInOutQuart,
+        duration: 0.9,
+        easing: [0.17, 0.55, 0.55, 1],
       },
     )
 
     return () => {
-      enterControl.cancel()
+      enterControl.stop()
 
       animate(span, {
-        x: [0, '-80%'],
+        x: [0, -200],
+        opacity: [1, 0],
       })
     }
   },
@@ -134,6 +136,7 @@ useInView(
 
 <style lang="css" scoped>
 .span {
-  transform: translateX(-80%);
+  transform: translateX(-200px);
+  opacity: 0;
 }
 </style>

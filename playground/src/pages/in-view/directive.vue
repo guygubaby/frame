@@ -6,6 +6,7 @@
 
     <div h-30rem w-30rem overflow-y-auto p-4 snap-y snap-mandatory>
       <section
+        v-inView="variants"
         w-full
         h-full
         flex
@@ -19,8 +20,10 @@
         dark:text-indigo-300
         font-bold
       >
-        <span>Scroll down</span>
-        <div i-carbon-arrow-down />
+        <div class="span" flex>
+          <span>Scroll down</span>
+          <div i-carbon-arrow-down />
+        </div>
       </section>
 
       <section
@@ -56,7 +59,7 @@
 </template>
 
 <script lang="ts" setup>
-import { EasingPresets, animate, defineInViewDirective, defineInViewVariants } from 'core/index'
+import { animate, defineInViewDirective, defineInViewVariants } from 'core/index'
 
 interface Item {
   id: number
@@ -99,19 +102,21 @@ const variants = defineInViewVariants({
       span,
       {
         transform: 'none',
+        opacity: 1,
       },
       {
-        delay: 0.05,
-        duration: 1,
-        easing: EasingPresets.easeInOutQuart,
+        delay: 0.2,
+        duration: 0.9,
+        easing: [0.17, 0.55, 0.55, 1],
       },
     )
 
     return () => {
-      enterControl.cancel()
+      enterControl.stop()
 
       animate(span, {
-        x: [0, '-80%'],
+        x: [0, -200],
+        opacity: [1, 0],
       })
     }
   },
@@ -123,6 +128,7 @@ const variants = defineInViewVariants({
 
 <style lang="css" scoped>
 .span {
-  transform: translateX(-80%);
+  transform: translateX(-200px);
+  opacity: 0;
 }
 </style>
