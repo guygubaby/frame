@@ -1,6 +1,7 @@
 {
   "name": "@bryce-loskie/frame",
   "version": "0.1.7",
+  "packageManager": "pnpm@7.9.0",
   "description": "Animation util for vue based on Motion One",
   "publishConfig": {
     "access": "public"
@@ -19,8 +20,9 @@
   "keywords": [
     "vue",
     "animation",
-    "transition",
-    "spring"
+    "spring",
+    "timeline",
+    "in-view"
   ],
   "sideEffects": false,
   "exports": {

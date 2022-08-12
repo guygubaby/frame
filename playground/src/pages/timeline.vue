@@ -14,7 +14,7 @@
       </div>
     </section>
 
-    <button class="btn" @click="reverse">
+    <button class="icon-btn flex items-center ring px-2 py-1 rounded" @click="reverse">
       reverse
     </button>
 
@@ -36,7 +36,7 @@ import { useTimeline } from 'core/index'
 const targetRef = ref<HTMLDivElement>()
 const targetRef1 = ref<HTMLSpanElement>()
 
-const { controlRef } = useTimeline([
+const controlRef = useTimeline([
   [targetRef, { x: 100 }, { duration: 1 }],
   [targetRef, { y: 100 }, { duration: 1, at: 0.2 }],
   [targetRef, { scale: 2 }, { duration: 1, at: '<' }],

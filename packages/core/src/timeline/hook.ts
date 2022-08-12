@@ -46,7 +46,5 @@ export const useTimeline = (
     disposeFn = noop
   })
 
-  return {
-    controlRef,
-  }
+  return controlRef
 }
