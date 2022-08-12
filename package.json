@@ -17,7 +17,8 @@
     "parse-yaml": "esno scripts/parse-yaml.ts",
     "build:play": "pnpm -C playground run build",
     "release": "bumpp package.json packages/*/package.json --commit --push --tag",
-    "test": "vitest"
+    "test": "vitest",
+    "typecheck": "tsc ./packages/**/*.ts --noEmit "
   },
   "dependencies": {
     "@bryce-loskie/scrollbar": "^0.1.3"
