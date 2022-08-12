@@ -20,3 +20,6 @@ export type { AcceptedElements } from './types/index'
 
 // in view module
 export { inView, useInView, defineInViewDirective, defineInViewVariants } from './in-view/index'
+
+// timeline module
+export { useTimeline, timeline } from './timeline/index'
