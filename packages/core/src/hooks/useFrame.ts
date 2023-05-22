@@ -15,7 +15,7 @@ type AnimationOptions = AnimationOptionsWithOverrides & {
  * Create a motion animation for a given element.
  * For more: https://motion.dev/dom/animate#options
  */
-export const useFrame = (target: MaybeRef<AcceptedElements>, keyframes: MotionKeyframesDefinition, options?: AnimationOptions) => {
+export function useFrame(target: MaybeRef<AcceptedElements>, keyframes: MotionKeyframesDefinition, options?: AnimationOptions) {
   const animationControl = shallowRef<Nullable<AnimationControls>>(null)
 
   onMounted(() => {

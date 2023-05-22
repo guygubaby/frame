@@ -1,5 +1,5 @@
-import { readFileSync, writeFileSync } from 'fs'
-import { resolve } from 'path'
+import { readFileSync, writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import type { Nullable } from '@bryce-loskie/utils'
 import YAML from 'yaml'
 
@@ -19,7 +19,7 @@ import type { BezierDefinition } from 'motion'
 **/
 `
 
-const parseYaml = (yamlFilePath: string) => {
+function parseYaml(yamlFilePath: string) {
   const raw = readFileSync(yamlFilePath, 'utf8')
   const res = YAML.parse(raw) as IEasingItem[]
   return res.map((item) => {
@@ -37,7 +37,7 @@ const parseYaml = (yamlFilePath: string) => {
     }, {} as Record<string, number[]>)
 }
 
-const bootstrap = () => {
+function bootstrap() {
   const baseFolder = resolve(process.cwd(), 'packages/core', 'src/easing')
   const yamlFileName = 'easings.yml'
   const presetsFileName = 'presets.ts'

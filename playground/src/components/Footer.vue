@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { useDark, useToggle } from '@vueuse/core'
+
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
+</script>
+
 <template>
   <div text-center>
     <nav text-xl mt-6 inline-flex gap-2>
@@ -17,10 +24,3 @@
     </nav>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useDark, useToggle } from '@vueuse/core'
-
-const isDark = useDark()
-const toggleDark = useToggle(isDark)
-</script>

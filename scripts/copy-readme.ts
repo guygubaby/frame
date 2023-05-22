@@ -1,7 +1,7 @@
-import path from 'path'
-import fs from 'fs'
+import path from 'node:path'
+import fs from 'node:fs'
 
-const copyReadme = () => {
+function copyReadme() {
   const srcPath = path.join(__dirname, '../README.md')
   const cwd = process.cwd()
   const destPath = path.join(cwd, 'README.md')

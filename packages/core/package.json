@@ -1,7 +1,7 @@
 {
   "name": "@bryce-loskie/frame",
   "version": "0.1.8",
-  "packageManager": "pnpm@7.9.0",
+  "packageManager": "pnpm@8.5.1",
   "description": "Animation util for vue based on Motion One",
   "publishConfig": {
     "access": "public"
@@ -46,9 +46,9 @@
     "start": "esno src/index.ts"
   },
   "peerDependencies": {
-    "vue": "^3.2.0"
+    "vue": "^3.3.4"
   },
   "dependencies": {
-    "motion": "^10.13.2"
+    "motion": "^10.16.2"
   }
 }

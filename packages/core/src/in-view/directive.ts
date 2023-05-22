@@ -8,7 +8,7 @@ interface InViewVariants {
   options?: InViewOptions
 }
 
-export const defineInViewVariants = ({ onStart, options }: InViewVariants) => {
+export function defineInViewVariants({ onStart, options }: InViewVariants) {
   return {
     onStart,
     options,
@@ -17,7 +17,7 @@ export const defineInViewVariants = ({ onStart, options }: InViewVariants) => {
 
 type InViewDirectiveOptions = ReturnType<typeof defineInViewVariants>
 
-export const defineInViewDirective = (): Directive<HTMLElement, InViewDirectiveOptions> => {
+export function defineInViewDirective(): Directive<HTMLElement, InViewDirectiveOptions> {
   let disposeFn = noop
 
   const register: DirectiveHook<HTMLElement, null, InViewDirectiveOptions> = (el, binding) => {

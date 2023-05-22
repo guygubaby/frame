@@ -1,3 +1,48 @@
+<script setup lang="ts">
+import { defineScrollbar } from '@bryce-loskie/scrollbar'
+import { EasingPresets, Framer, defineDirective, defineFrame, defineVariants, spring, useFrame } from 'core/index'
+import { version } from '../../../packages/core/package.json'
+
+defineScrollbar({
+  width: '6px',
+})
+
+const variants = defineVariants({
+  enter: {
+    x: [-120, 0],
+    scale: [1, 2],
+    options: {
+      easing: spring(),
+    },
+  },
+  leave: {
+    x: 120,
+    opacity: 0.5,
+    scale: 1,
+  },
+})
+
+const isShow = ref(true)
+const toggle = useToggle(isShow)
+
+const elRef = ref<HTMLElement>()
+const animation = useFrame(elRef, {
+  x: [-120, 0],
+  scale: [1, 2],
+}, {
+  easing: spring(),
+})
+
+const vFrame = defineDirective()
+const keyframes = defineFrame({
+  x: [-200, 0],
+  scale: [1, 2],
+}, {
+  easing: EasingPresets.easeInOutQuart,
+  duration: 2,
+})
+</script>
+
 <template>
   <div container m-auto>
     <p text="2xl" m="b6" class="capitalize">
@@ -75,48 +120,3 @@
     </ul>
   </div>
 </template>
-
-<script setup lang="ts">
-import { defineScrollbar } from '@bryce-loskie/scrollbar'
-import { EasingPresets, Framer, defineDirective, defineFrame, defineVariants, spring, useFrame } from 'core/index'
-import { version } from '../../../packages/core/package.json'
-
-defineScrollbar({
-  width: '6px',
-})
-
-const variants = defineVariants({
-  enter: {
-    x: [-120, 0],
-    scale: [1, 2],
-    options: {
-      easing: spring(),
-    },
-  },
-  leave: {
-    x: 120,
-    opacity: 0.5,
-    scale: 1,
-  },
-})
-
-const isShow = ref(true)
-const toggle = useToggle(isShow)
-
-const elRef = ref<HTMLElement>()
-const animation = useFrame(elRef, {
-  x: [-120, 0],
-  scale: [1, 2],
-}, {
-  easing: spring(),
-})
-
-const vFrame = defineDirective()
-const keyframes = defineFrame({
-  x: [-200, 0],
-  scale: [1, 2],
-}, {
-  easing: EasingPresets.easeInOutQuart,
-  duration: 2,
-})
-</script>

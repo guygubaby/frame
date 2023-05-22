@@ -1,3 +1,21 @@
+<script lang="ts" setup>
+import { useTimeline } from 'core/index'
+
+const targetRef = ref<HTMLDivElement>()
+const targetRef1 = ref<HTMLSpanElement>()
+
+const controlRef = useTimeline([
+  [targetRef, { x: 100 }, { duration: 1 }],
+  [targetRef, { y: 100 }, { duration: 1, at: 0.2 }],
+  [targetRef, { scale: 2 }, { duration: 1, at: '<' }],
+  [targetRef1, { opacity: [0, 1], x: 100, y: 200 }, { duration: 1 }],
+])
+
+function reverse() {
+  controlRef.value?.reverse()
+}
+</script>
+
 <template>
   <div flex="~ col" items-center>
     <h1 text-2xl>
@@ -29,21 +47,3 @@
     </div>
   </div>
 </template>
-
-<script lang="ts" setup>
-import { useTimeline } from 'core/index'
-
-const targetRef = ref<HTMLDivElement>()
-const targetRef1 = ref<HTMLSpanElement>()
-
-const controlRef = useTimeline([
-  [targetRef, { x: 100 }, { duration: 1 }],
-  [targetRef, { y: 100 }, { duration: 1, at: 0.2 }],
-  [targetRef, { scale: 2 }, { duration: 1, at: '<' }],
-  [targetRef1, { opacity: [0, 1], x: 100, y: 200 }, { duration: 1 }],
-])
-
-const reverse = () => {
-  controlRef.value?.reverse()
-}
-</script>

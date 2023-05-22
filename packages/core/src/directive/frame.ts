@@ -11,14 +11,14 @@ type Frame = ReturnType<typeof defineFrame>
 /**
  * Define frame for directive.
  */
-export const defineFrame = (keyframes: MotionKeyframesDefinition, options?: AnimationOptions) => {
+export function defineFrame(keyframes: MotionKeyframesDefinition, options?: AnimationOptions) {
   return {
     keyframes,
     options,
   }
 }
 
-export const defineDirective = (): Directive<HTMLElement, any> => {
+export function defineDirective(): Directive<HTMLElement, any> {
   const register = (
     el: HTMLElement,
     binding: DirectiveBinding,

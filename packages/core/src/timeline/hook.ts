@@ -17,10 +17,8 @@ type TimelineDefinition = TimelineSegment[]
 
  * Doc: https://motion.dev/dom/timeline
  */
-export const useTimeline = (
-  definition: TimelineDefinition,
-  options?: TimelineOptions,
-) => {
+export function useTimeline(definition: TimelineDefinition,
+  options?: TimelineOptions) {
   const controlRef = shallowRef<Nullable<AnimationControls>>(null)
   let disposeFn = noop
 

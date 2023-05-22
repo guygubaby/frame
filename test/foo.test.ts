@@ -17,13 +17,13 @@ const variants = {
 
 type Vars = typeof variants
 
-const toArray = <T>(arrayLike: T) => {
+function toArray<T>(arrayLike: T) {
   if (Array.isArray(arrayLike))
     return arrayLike
   return [arrayLike]
 }
 
-const preprocessVariants = (vars: Vars) => {
+function preprocessVariants(vars: Vars) {
   const { initial, enter: _enter } = vars
   const enter = objectOmit(_enter, 'options')
 
