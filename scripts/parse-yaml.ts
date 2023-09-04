@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import process from 'node:process'
 import type { Nullable } from '@bryce-loskie/utils'
 import YAML from 'yaml'
 
@@ -32,7 +33,7 @@ function parseYaml(yamlFilePath: string) {
     }
   }).filter(item => item.css)
     .reduce((acc, item) => {
-      acc[item.name] = item.css!.split(', ').map(item => parseFloat(item))
+      acc[item.name] = item.css!.split(', ').map(item => Number.parseFloat(item))
       return acc
     }, {} as Record<string, number[]>)
 }
