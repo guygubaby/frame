@@ -1,7 +1,7 @@
 import { noop } from '@bryce-loskie/utils'
 import type { MaybeRef } from '@vueuse/core'
 import { tryOnScopeDispose } from '@vueuse/core'
-import type { InViewOptions, ViewChangeHandler } from 'motion'
+import type { ElementOrSelector, InViewOptions, ViewChangeHandler } from 'motion'
 import { inView } from 'motion'
 import { onMounted, toValue } from 'vue'
 import type { AcceptedElements } from '../types'
@@ -13,7 +13,7 @@ export function useInView(targetRef: MaybeRef<AcceptedElements>,
   let disposeFn = noop
 
   onMounted(() => {
-    const target = toValue(targetRef)
+    const target = toValue(targetRef) as ElementOrSelector
     if (!target)
       return
 

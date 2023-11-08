@@ -19,7 +19,7 @@ export function useFrame(target: MaybeRef<AcceptedElements>, keyframes: MotionKe
   const animationControl = shallowRef<Nullable<AnimationControls>>(null)
 
   onMounted(() => {
-    const el = unref(target)
+    const el = unref(target) as AcceptedElements
     if (!el)
       return
     const animation = animate(el, keyframes, options)
