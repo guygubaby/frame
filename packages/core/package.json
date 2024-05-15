@@ -1,7 +1,7 @@
 {
   "name": "@bryce-loskie/frame",
   "version": "0.2.3",
-  "packageManager": "pnpm@8.5.1",
+  "packageManager": "pnpm@9.1.1",
   "description": "Animation util for vue based on Motion One",
   "publishConfig": {
     "access": "public"
@@ -49,6 +49,6 @@
     "vue": "^3.3.4"
   },
   "dependencies": {
-    "motion": "^10.16.2"
+    "motion": "^10.17.0"
   }
 }
