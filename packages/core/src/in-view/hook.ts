@@ -1,15 +1,12 @@
-import { noop } from '@bryce-loskie/utils'
 import type { MaybeRef } from '@vueuse/core'
-import { tryOnScopeDispose } from '@vueuse/core'
 import type { ElementOrSelector, InViewOptions, ViewChangeHandler } from 'motion'
+import type { AcceptedElements } from '../types'
+import { noop } from '@bryce-loskie/utils'
+import { tryOnScopeDispose } from '@vueuse/core'
 import { inView } from 'motion'
 import { onMounted, toValue } from 'vue'
-import type { AcceptedElements } from '../types'
 
-export function useInView(targetRef: MaybeRef<AcceptedElements>,
-  onStart: (entry: IntersectionObserverEntry) => void | ViewChangeHandler,
-  options?: InViewOptions,
-) {
+export function useInView(targetRef: MaybeRef<AcceptedElements>, onStart: (entry: IntersectionObserverEntry) => void | ViewChangeHandler, options?: InViewOptions) {
   let disposeFn = noop
 
   onMounted(() => {

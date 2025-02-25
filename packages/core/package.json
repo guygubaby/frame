@@ -1,7 +1,7 @@
 {
   "name": "@bryce-loskie/frame",
   "version": "0.2.4",
-  "packageManager": "pnpm@9.1.1",
+  "packageManager": "pnpm@10.4.1",
   "description": "Animation util for vue based on Motion One",
   "publishConfig": {
     "access": "public"
@@ -28,8 +28,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
     }
   },
   "main": "./dist/index.js",
@@ -49,6 +49,6 @@
     "vue": "^3.3.4"
   },
   "dependencies": {
-    "motion": "^10.17.0"
+    "motion": "^12.4.7"
   }
 }

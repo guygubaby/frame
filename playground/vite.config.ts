@@ -1,11 +1,11 @@
 import { resolve } from 'node:path'
-import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Unocss from 'unocss/vite'
-import Pages from 'vite-plugin-pages'
-import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { defineConfig } from 'vite'
 import Inspect from 'vite-plugin-inspect'
+import Pages from 'vite-plugin-pages'
 
 export default defineConfig({
   resolve: {
@@ -17,9 +17,7 @@ export default defineConfig({
   plugins: [
     Inspect(),
 
-    Vue({
-      reactivityTransform: true,
-    }),
+    Vue(),
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages(),

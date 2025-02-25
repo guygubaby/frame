@@ -1,6 +1,6 @@
-import { noop } from '@bryce-loskie/utils'
 import type { InViewOptions, ViewChangeHandler } from 'motion'
 import type { Directive, DirectiveHook } from 'vue'
+import { noop } from '@bryce-loskie/utils'
 import { inView } from 'motion'
 
 interface InViewVariants {

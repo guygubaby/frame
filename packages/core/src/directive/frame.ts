@@ -1,6 +1,6 @@
+import type { AnimationOptionsWithOverrides, MotionKeyframesDefinition } from '@motionone/dom'
 import type { Directive, DirectiveBinding } from 'vue'
 import { animate } from 'motion'
-import type { AnimationOptionsWithOverrides, MotionKeyframesDefinition } from '@motionone/dom'
 
 type AnimationOptions = AnimationOptionsWithOverrides & {
   onComplete?: (el: Element) => void

@@ -1,3 +1,3 @@
-export { inView } from 'motion'
-export { useInView } from './hook'
 export { defineInViewDirective, defineInViewVariants } from './directive'
+export { useInView } from './hook'
+export { inView } from 'motion'

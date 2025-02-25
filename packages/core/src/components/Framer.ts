@@ -1,8 +1,8 @@
-import type { PropType } from 'vue'
-import { Transition, defineComponent, h, useSlots } from 'vue'
-import { animate } from 'motion'
 import type { Fn } from '@bryce-loskie/utils'
-import type { Variants } from './types'
+import type { DOMKeyframesDefinition } from 'motion'
+import type { PropType } from 'vue'
+import { animate } from 'motion'
+import { defineComponent, h, Transition, useSlots } from 'vue'
 
 export const Framer = defineComponent({
   name: 'Framer',
@@ -18,7 +18,7 @@ export const Framer = defineComponent({
       required: false,
     },
     variants: {
-      type: Object as PropType<Variants>,
+      type: Object as PropType<DOMKeyframesDefinition>,
       required: true,
     },
   },
@@ -29,8 +29,7 @@ export const Framer = defineComponent({
       const keyframes = variants[type]
       const options = keyframes.options
       animate(el, keyframes, options)
-        .finished
-        .finally(() => {
+        .then(() => {
           options?.onComplete?.(el)
           done()
         })

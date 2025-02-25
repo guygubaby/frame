@@ -1,5 +1,5 @@
 import { isDef, objectOmit } from '@bryce-loskie/utils'
-import { expect, test } from 'vitest'
+import { expect, it } from 'vitest'
 
 const variants = {
   initial: {
@@ -47,7 +47,7 @@ function preprocessVariants(vars: Vars) {
   }, {})
 }
 
-test('test variants utility fn', () => {
+it('test variants utility fn', () => {
   const res = preprocessVariants(variants)
   expect(res).toMatchInlineSnapshot(`
     {

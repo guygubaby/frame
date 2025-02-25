@@ -1,7 +1,7 @@
+import type { Nullable } from '@bryce-loskie/utils'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import process from 'node:process'
-import type { Nullable } from '@bryce-loskie/utils'
 import YAML from 'yaml'
 
 interface IEasingItem {
@@ -31,11 +31,10 @@ function parseYaml(yamlFilePath: string) {
       css: newCss ?? null,
       math,
     }
-  }).filter(item => item.css)
-    .reduce((acc, item) => {
-      acc[item.name] = item.css!.split(', ').map(item => Number.parseFloat(item))
-      return acc
-    }, {} as Record<string, number[]>)
+  }).filter(item => item.css).reduce((acc, item) => {
+    acc[item.name] = item.css!.split(', ').map(item => Number.parseFloat(item))
+    return acc
+  }, {} as Record<string, number[]>)
 }
 
 function bootstrap() {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineScrollbar } from '@bryce-loskie/scrollbar'
-import { EasingPresets, Framer, defineDirective, defineFrame, defineVariants, spring, useFrame } from 'core/index'
+import { defineDirective, defineFrame, defineVariants, EasingPresets, Framer, spring, useFrame } from 'core/index'
 import { version } from '../../../packages/core/package.json'
 
 defineScrollbar({

@@ -1,10 +1,10 @@
 import type { BezierDefinition } from 'motion'
 
 /**
-* This file is generated from  https://github.com/ai/easings.net/blob/master/src/easings.yml
-*
-* Live preview: https://easings.net/en#
-**/
+ * This file is generated from  https://github.com/ai/easings.net/blob/master/src/easings.yml
+ *
+ * Live preview: https://easings.net/en#
+ */
 export const EasingPresets: Record<string, BezierDefinition> = {
   easeInSine: [
     0.12,

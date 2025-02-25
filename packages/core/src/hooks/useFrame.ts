@@ -1,11 +1,11 @@
-import type { MaybeRef } from '@vueuse/core'
-import { tryOnScopeDispose } from '@vueuse/core'
-import type { AnimationOptionsWithOverrides, MotionKeyframesDefinition } from '@motionone/dom'
-import type { AnimationControls } from 'motion'
-import { animate } from 'motion'
 import type { Nullable } from '@bryce-loskie/utils'
-import { onMounted, shallowRef, unref } from 'vue'
+import type { AnimationOptionsWithOverrides, MotionKeyframesDefinition } from '@motionone/dom'
+import type { MaybeRef } from '@vueuse/core'
+import type { AnimationControls } from 'motion'
 import type { AcceptedElements } from '../types'
+import { tryOnScopeDispose } from '@vueuse/core'
+import { animate } from 'motion'
+import { onMounted, shallowRef, unref } from 'vue'
 
 type AnimationOptions = AnimationOptionsWithOverrides & {
   onComplete?: (el: AcceptedElements) => void
@@ -23,7 +23,7 @@ export function useFrame(target: MaybeRef<AcceptedElements>, keyframes: MotionKe
     if (!el)
       return
     const animation = animate(el, keyframes, options)
-    animation.finished.finally(() => {
+    animation.then(() => {
       options?.onComplete?.(el)
     })
     animationControl.value = animation
