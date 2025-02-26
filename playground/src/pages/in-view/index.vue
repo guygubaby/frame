@@ -36,25 +36,23 @@ const sectionRefs = ref<HTMLElement[]>([])
 
 useInView(
   sectionRefs,
-  ({ target }) => {
+  (target) => {
     const span = target.querySelector('.span')!
 
     const enterControl = animate(
       span,
       {
-        transform: 'none',
-        opacity: 1,
+        x: [-100, 0],
+        opacity: [0, 1],
       },
       {
         delay: 0.2,
         duration: 0.9,
-        easing: [0.17, 0.55, 0.55, 1],
       },
     )
 
     return () => {
       enterControl.stop()
-
       animate(span, {
         x: [0, -200],
         opacity: [1, 0],
@@ -133,10 +131,3 @@ useInView(
     </div>
   </section>
 </template>
-
-<style lang="css" scoped>
-.span {
-  transform: translateX(-200px);
-  opacity: 0;
-}
-</style>

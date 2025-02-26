@@ -1,13 +1,12 @@
 import type { ElementOrSelector } from 'motion'
-import type { MaybeRef } from 'vue'
-import type { AcceptedElements } from '../types'
+import type { MaybeRef, ShallowRef } from 'vue'
 import type { InViewOptions, IOnStart } from './types'
 import { noop } from '@bryce-loskie/utils'
 import { tryOnScopeDispose } from '@vueuse/core'
 import { inView } from 'motion'
 import { onMounted, toValue } from 'vue'
 
-export function useInView(targetRef: MaybeRef<AcceptedElements>, onStart: IOnStart, options?: InViewOptions) {
+export function useInView(targetRef: MaybeRef<ElementOrSelector | undefined> | Readonly<ShallowRef<HTMLElement | null>>, onStart: IOnStart, options?: InViewOptions) {
   let disposeFn = noop
 
   onMounted(() => {
