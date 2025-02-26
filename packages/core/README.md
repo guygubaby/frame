@@ -29,7 +29,7 @@ pnpm i @bryce-loskie/frame
       x: [-200, 0],
       scale: [1, 2],
       options: {
-        easing: spring(),
+        type: spring,
       },
     },
     leave: {

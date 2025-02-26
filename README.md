@@ -52,7 +52,7 @@ pnpm i @bryce-loskie/frame
 </template>
 
 <script lang="ts" setup>
-  import { useFrame, spring } from '@bryce-loskie/frame'
+  import { useFrame } from '@bryce-loskie/frame'
 
   const elRef = ref()
   const animation = useFrame(
@@ -61,9 +61,6 @@ pnpm i @bryce-loskie/frame
       x: [-200, 0],
       scale: [1, 2],
     },
-    {
-      easing: spring(),
-    }
   )
 </script>
 ```
@@ -76,14 +73,12 @@ pnpm i @bryce-loskie/frame
 </template>
 
 <script lang="ts" setup>
-  import { defineDirective, defineFrame, spring } from '@bryce-loskie/frame'
+  import { defineDirective, defineFrame } from '@bryce-loskie/frame'
 
   const vFrame = defineDirective()
   const keyframes = defineFrame({
     x: [-200, 0],
     scale: [1, 2],
-  }, {
-    easing: spring(),
   })
 </script>
 ```
