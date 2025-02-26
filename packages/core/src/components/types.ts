@@ -1,10 +1,6 @@
-import type { AnimationOptionsWithOverrides, MotionKeyframesDefinition } from '@motionone/dom'
+import type { AnimationOptions, DOMKeyframesDefinition } from 'motion'
 
-export type AnimationOptions = AnimationOptionsWithOverrides & {
-  onComplete?: (el: Element) => void
-}
-
-export type VariantItem = MotionKeyframesDefinition & {
+export type VariantItem = DOMKeyframesDefinition & {
   options?: AnimationOptions
 }
 

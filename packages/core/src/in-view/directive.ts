@@ -1,19 +1,9 @@
-import type { InViewOptions, ViewChangeHandler } from 'motion'
 import type { Directive, DirectiveHook } from 'vue'
+import type { InViewVariants } from './types'
 import { noop } from '@bryce-loskie/utils'
 import { inView } from 'motion'
 
-interface InViewVariants {
-  onStart: (entry: IntersectionObserverEntry) => void | ViewChangeHandler
-  options?: InViewOptions
-}
-
-export function defineInViewVariants({ onStart, options }: InViewVariants) {
-  return {
-    onStart,
-    options,
-  }
-}
+export const defineInViewVariants = (payload: InViewVariants) => payload
 
 type InViewDirectiveOptions = ReturnType<typeof defineInViewVariants>
 

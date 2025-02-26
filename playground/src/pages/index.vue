@@ -1,23 +1,19 @@
 <script setup lang="ts">
-import { defineScrollbar } from '@bryce-loskie/scrollbar'
-import { defineDirective, defineFrame, defineVariants, EasingPresets, Framer, spring, useFrame } from 'core/index'
+import { defineDirective, defineFrame, defineVariants, Framer, spring, useFrame } from 'core/index'
 import { version } from '../../../packages/core/package.json'
-
-defineScrollbar({
-  width: '6px',
-})
 
 const variants = defineVariants({
   enter: {
     x: [-120, 0],
     scale: [1, 2],
+    color: ['red', 'blue'],
     options: {
-      easing: spring(),
+      type: spring,
     },
   },
   leave: {
     x: 120,
-    opacity: 0.5,
+    opacity: 0,
     scale: 1,
   },
 })
@@ -25,12 +21,12 @@ const variants = defineVariants({
 const isShow = ref(true)
 const toggle = useToggle(isShow)
 
-const elRef = ref<HTMLElement>()
-const animation = useFrame(elRef, {
+const elRef = useTemplateRef<HTMLElement>('elRef')
+useFrame(elRef, {
   x: [-120, 0],
   scale: [1, 2],
 }, {
-  easing: spring(),
+  type: spring,
 })
 
 const vFrame = defineDirective()
@@ -38,8 +34,8 @@ const keyframes = defineFrame({
   x: [-200, 0],
   scale: [1, 2],
 }, {
-  easing: EasingPresets.easeInOutQuart,
-  duration: 2,
+  type: 'spring',
+  duration: 1,
 })
 </script>
 
@@ -57,7 +53,7 @@ const keyframes = defineFrame({
         </p>
         <div class="ring rounded-xl shadow" flex="~ col" items="center">
           <div class="p-10 h-32">
-            <Framer appear :variants="variants">
+            <Framer appear :variants>
               <div v-if="isShow" i-carbon-windy-snow text-4xl inline-block />
             </Framer>
           </div>
@@ -81,15 +77,6 @@ const keyframes = defineFrame({
           <div class="p-10 h-32">
             <div ref="elRef" i-carbon-windy-snow text="4xl sky-500" inline-block />
           </div>
-
-          <div>
-            <button
-              class="m-3 text-sm btn capitalize"
-              @click="animation?.reverse()"
-            >
-              reverse
-            </button>
-          </div>
         </div>
       </li>
 
@@ -107,13 +94,6 @@ const keyframes = defineFrame({
       <li flex justify-center mt>
         <router-link to="in-view" class="icon-btn flex items-center ring px-2 py-1 rounded">
           InView
-          <div i-carbon-arrow-right ml-1 />
-        </router-link>
-      </li>
-
-      <li flex justify-center mt>
-        <router-link to="timeline" class="icon-btn flex items-center ring px-2 py-1 rounded">
-          Timeline
           <div i-carbon-arrow-right ml-1 />
         </router-link>
       </li>

@@ -1,32 +1,28 @@
-import type { AnimationOptionsWithOverrides, MotionKeyframesDefinition } from '@motionone/dom'
+import type { AnimationOptions, DOMKeyframesDefinition } from 'motion'
 import type { Directive, DirectiveBinding } from 'vue'
 import { animate } from 'motion'
-
-type AnimationOptions = AnimationOptionsWithOverrides & {
-  onComplete?: (el: Element) => void
-}
-
-type Frame = ReturnType<typeof defineFrame>
 
 /**
  * Define frame for directive.
  */
-export function defineFrame(keyframes: MotionKeyframesDefinition, options?: AnimationOptions) {
+export function defineFrame(
+  keyframes: DOMKeyframesDefinition,
+  options?: AnimationOptions,
+) {
   return {
     keyframes,
     options,
   }
 }
 
+type Frame = ReturnType<typeof defineFrame>
+
 export function defineDirective(): Directive<HTMLElement, any> {
-  const register = (
-    el: HTMLElement,
-    binding: DirectiveBinding,
-  ) => {
+  const register = async (el: HTMLElement, binding: DirectiveBinding) => {
     const frame = binding.value as Frame
-    animate(el, frame.keyframes, frame.options).finished.finally(() => {
-      frame.options?.onComplete?.(el)
-    })
+    const { onComplete, ...restOptions } = frame.options || {}
+    await animate(el, frame.keyframes, restOptions)
+    onComplete?.()
   }
 
   return {

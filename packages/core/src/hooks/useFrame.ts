@@ -1,32 +1,28 @@
 import type { Nullable } from '@bryce-loskie/utils'
-import type { AnimationOptionsWithOverrides, MotionKeyframesDefinition } from '@motionone/dom'
-import type { MaybeRef } from '@vueuse/core'
-import type { AnimationControls } from 'motion'
-import type { AcceptedElements } from '../types'
+import type { AnimationOptions, AnimationPlaybackControls, DOMKeyframesDefinition, ElementOrSelector } from 'motion'
+import type { MaybeRef, ShallowRef } from 'vue'
 import { tryOnScopeDispose } from '@vueuse/core'
 import { animate } from 'motion'
-import { onMounted, shallowRef, unref } from 'vue'
-
-type AnimationOptions = AnimationOptionsWithOverrides & {
-  onComplete?: (el: AcceptedElements) => void
-}
+import { onMounted, shallowRef, toValue } from 'vue'
 
 /**
  * Create a motion animation for a given element.
  * For more: https://motion.dev/dom/animate#options
  */
-export function useFrame(target: MaybeRef<AcceptedElements>, keyframes: MotionKeyframesDefinition, options?: AnimationOptions) {
-  const animationControl = shallowRef<Nullable<AnimationControls>>(null)
+export function useFrame(target: MaybeRef<ElementOrSelector | undefined> | Readonly<ShallowRef<HTMLElement | null>>, keyframes: DOMKeyframesDefinition, options?: AnimationOptions) {
+  const animationControl = shallowRef<Nullable<AnimationPlaybackControls>>(null)
 
-  onMounted(() => {
-    const el = unref(target) as AcceptedElements
+  onMounted(async () => {
+    const el = toValue(target)
     if (!el)
       return
-    const animation = animate(el, keyframes, options)
-    animation.then(() => {
-      options?.onComplete?.(el)
-    })
+
+    const { onComplete, ...restOptions } = options || {}
+    const animation = animate(el, keyframes, restOptions)
     animationControl.value = animation
+    animation.then(() => {
+      onComplete?.()
+    })
   })
 
   tryOnScopeDispose(() => {

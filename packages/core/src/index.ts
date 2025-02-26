@@ -1,7 +1,7 @@
 // Framer component related
 export { Framer } from './components'
 
-export type { VariantItem, Variants } from './components/types'
+export type { VariantItem as InViewVariants, Variants as IVariants } from './components/types'
 
 export { defineVariants } from './components/utils'
 
@@ -15,10 +15,7 @@ export { EasingPresets } from './easing/presets'
 export { useFrame } from './hooks/useFrame'
 
 // in view module
-export { defineInViewDirective, defineInViewVariants, inView, useInView } from './in-view/index'
+export { defineInViewDirective, defineInViewVariants, useInView } from './in-view/index'
 
-// types
-export type { AcceptedElements } from './types/index'
-
-// misc
-export { animate, hover, press, scroll, spring, stagger, view } from 'motion'
+// motion
+export * from 'motion'

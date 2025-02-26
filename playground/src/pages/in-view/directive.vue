@@ -35,7 +35,7 @@ const list: Item[] = [
 const vInView = defineInViewDirective()
 
 const variants = defineInViewVariants({
-  onStart: ({ target }) => {
+  onStart: (target) => {
     const span = target.querySelector('.span')!
 
     const enterControl = animate(

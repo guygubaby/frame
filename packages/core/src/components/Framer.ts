@@ -1,6 +1,6 @@
 import type { Fn } from '@bryce-loskie/utils'
-import type { DOMKeyframesDefinition } from 'motion'
 import type { PropType } from 'vue'
+import type { Variants } from './types'
 import { animate } from 'motion'
 import { defineComponent, h, Transition, useSlots } from 'vue'
 
@@ -18,21 +18,19 @@ export const Framer = defineComponent({
       required: false,
     },
     variants: {
-      type: Object as PropType<DOMKeyframesDefinition>,
+      type: Object as PropType<Variants>,
       required: true,
     },
   },
   setup({ appear, tag, variants }) {
     const slots = useSlots()
 
-    const interceptor = (el: Element, done: Fn, type: 'enter' | 'leave') => {
-      const keyframes = variants[type]
-      const options = keyframes.options
-      animate(el, keyframes, options)
-        .then(() => {
-          options?.onComplete?.(el)
-          done()
-        })
+    const interceptor = async (el: Element, done: Fn, type: 'enter' | 'leave') => {
+      const { options, ...keyframes } = variants[type]
+      const { onComplete, ...restOptions } = options || {}
+      await animate(el, keyframes, restOptions)
+      done()
+      onComplete?.()
     }
 
     const onEnter = (el: Element, done: Fn) => {
